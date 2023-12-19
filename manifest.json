@@ -1,0 +1,11 @@
+{
+	"id": "inango-daily-report",
+	"name": "Inango Daily Report",
+	"version": "0.0.1",
+	"minAppVersion": "0.15.0",
+	"description": "Allows you to generate and send daily reports to your email",
+	"author": "Bogomazov Andrei",
+	"authorUrl": "https://redmine.inango.com/people/332",
+	"fundingUrl": "https://redmine.inango.com/people/332",
+	"isDesktopOnly": false
+}
