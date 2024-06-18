@@ -1,8 +1,8 @@
-import { Mailer } from '@/interfaces/mailer';
-import { MailSettings } from '@/interfaces/settings/mail_settings';
+import { MailSettings } from '@/interfaces/settings';
+import { SMTPClient } from '@/interfaces/smtp';
 import * as nodemailer from 'nodemailer';
 
-export class SMTPMailer implements Mailer {
+export class SMTPMailer implements SMTPClient {
 	private readonly transporter: nodemailer.Transporter;
 	private readonly mailOptions: nodemailer.SendMailOptions;
 
@@ -42,16 +42,20 @@ export class SMTPMailer implements Mailer {
 		};
 	}
 
-	send(text: string): void {
+	send(text: string): Promise<void> {
 		this.mailOptions.text = text;
 		console.log('transporter: ', this.transporter);
 
-		this.transporter.sendMail(this.mailOptions, function (error, info) {
-			if (error) {
-				console.log(error);
-			} else {
-				console.log('Email sent: ' + info.response);
-			}
+		return new Promise((resolve, reject) => {
+			this.transporter.sendMail(this.mailOptions, (error, info) => {
+				if (error) {
+					console.error(error);
+					reject(error);
+				} else {
+					console.log('Email sent: ' + info.response);
+					resolve();
+				}
+			});
 		});
 	}
 }
