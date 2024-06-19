@@ -1,6 +1,6 @@
 {
 	"name": "inango-daily-report",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "Allows you to generate and send daily reports to your email",
 	"main": "main.js",
 	"scripts": {
@@ -8,7 +8,11 @@
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
-	"keywords": [],
+	"keywords": [
+		"obsidian",
+		"inango",
+		"daily-report"
+	],
 	"author": "Bogomazov Andrei",
 	"license": "MIT",
 	"devDependencies": {
